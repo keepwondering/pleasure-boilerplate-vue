@@ -1,10 +1,10 @@
 {
   "name": "{{{ projectName }}}",
   "author": "{{{ author }}}",
-  "version": "1.0.0",
-  "main": "dist/{{{ projectName }}}.js",
-  "module": "dist/{{{ projectName }}}.esm.js",
-  "browser": "dist/{{{ projectName }}}.iife.js",
+  "version": "1.0.0",{{#if config.cjs}}
+  "main": "dist/{{{ projectName }}}.js",{{/if}}{{#if config.esm}}
+  "module": "dist/{{{ projectName }}}.esm.js",{{/if}}{{#if config.iife}}
+  "browser": "dist/{{{ projectName }}}.iife.js",{{/if}}
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",

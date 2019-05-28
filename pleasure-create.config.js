@@ -1,3 +1,4 @@
+const path = require('path')
 const empty = v => {
   return /^[\s]*$/.test(v)
 }
@@ -17,52 +18,56 @@ const kebabCase = str => {
 }
 module.exports = {
   // see `inquirer.prompt` in https://github.com/SBoudrias/Inquirer.js/
-  prompts: [
-    {
-      name: 'author',
-      message: 'Author name'
-    },
-    {
-      name: 'projectName',
-      message: 'Project name',
-      validate (n) {
-        return empty(n) ? 'Enter a valid project name' : true
+  savePreset: ['author'],
+  prompts (dest) {
+    return [
+      {
+        name: 'author',
+        message: 'Author name'
       },
-      filter: kebabCase,
-      transformer (v) {
-        return kebabCase(v)
-      }
-    },
-    {
-      type: 'checkbox',
-      name: 'config',
-      message: 'Distribute for',
-      choices: [
-        {
-          name: 'cjs',
-          value: 'cjs',
-          checked: true
+      {
+        name: 'projectName',
+        message: 'Project name',
+        default: path.basename(dest),
+        validate (n) {
+          return empty(n) ? 'Enter a valid project name' : true
         },
-        {
-          name: 'esm',
-          value: 'esm',
-          checked: true
-        },
-        {
-          name: 'iife',
-          value: 'iife',
-          checked: false
+        filter: kebabCase,
+        transformer (v) {
+          return kebabCase(v)
         }
-      ]
-    },
-    {
-      name: 'iifeName',
-      message: 'iife module name',
-      when (a) {
-        return a.config.indexOf('iife') >= 0
+      },
+      {
+        type: 'checkbox',
+        name: 'config',
+        message: 'Distribute for',
+        choices: [
+          {
+            name: 'cjs',
+            value: 'cjs',
+            checked: true
+          },
+          {
+            name: 'esm',
+            value: 'esm',
+            checked: true
+          },
+          {
+            name: 'iife',
+            value: 'iife',
+            checked: false
+          }
+        ]
+      },
+      {
+        name: 'iifeName',
+        message: 'iife module name',
+        when (a) {
+          return a.config.indexOf('iife') >= 0
+        }
       }
-    }
-  ],
+    ]
+  },
   transform (data) {
     const config = {}
     data.config.forEach(v => {
