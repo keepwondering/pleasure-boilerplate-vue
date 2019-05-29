@@ -73,6 +73,7 @@ module.exports = {
     data.config.forEach(v => {
       config[v] = true
     })
+    data.year = new Date().getFullYear()
     data.config = config
     return data
   }
