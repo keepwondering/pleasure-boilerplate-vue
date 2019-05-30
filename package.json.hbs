@@ -8,10 +8,12 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",
-    "build:live": "nodemon -w src --exec yarn build"
+    "build:live": "nodemon -w src --exec yarn build",
+    "build:docs": "jsdoc2md --template README.hbs --files dist/{{{ projectName }}}{{#if config.cjs}}{{else}}{{#if config.esm}}esm{{else}}iife{{/if}}{{/if}}.js"
   },
   "devDependencies": {
     "nodemon": "^1.19.1",
+    "jsdoc-to-markdown": "^5.0.0",
     "rollup": "^1.12.4",
     "rollup-plugin-alias": "^1.5.1",
     "rollup-plugin-babel-minify": "^8.0.0",
