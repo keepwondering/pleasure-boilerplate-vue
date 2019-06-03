@@ -1,0 +1,23 @@
+{
+  "name": "pleasure-boilerplate-rollup-bundle",
+  "author": "Martin Rafael Gonzalez <tin@devtin.io>",
+  "version": "1.0.0",
+  "main": "dist/pleasure-boilerplate-rollup-bundle.js",
+  "module": "dist/pleasure-boilerplate-rollup-bundle.esm.js",
+  "browser": "dist/pleasure-boilerplate-rollup-bundle.iife.js",
+  "license": "MIT",
+  "scripts": {
+    "buildd": "rollup -c",
+    "build:live": "nodemon -w src --exec yarn build",
+    "build:docs": "jsdoc2md --template README.hbs --files dist/pleasure-boilerplate-rollup-bundle.js"
+  },
+  "devDependencies": {
+    "jsdoc-to-markdown": "^5.0.0",
+    "nodemon": "^1.19.1",
+    "rollup": "^1.12.4",
+    "rollup-plugin-alias": "^1.5.1",
+    "rollup-plugin-babel-minify": "^8.0.0",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-json": "^4.0.0"
+  }
+}
