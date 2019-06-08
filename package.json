@@ -1,10 +1,10 @@
 {
-  "name": "pleasure-boilerplate-rollup-bundle",
+  "name": "pleasure-boilerplate-vue",
   "author": "Martin Rafael Gonzalez <tin@devtin.io>",
   "version": "1.0.0",
-  "main": "dist/pleasure-boilerplate-rollup-bundle.js",
-  "module": "dist/pleasure-boilerplate-rollup-bundle.esm.js",
-  "browser": "dist/pleasure-boilerplate-rollup-bundle.iife.js",
+  "main": "dist/pleasure-boilerplate-vue.js",
+  "module": "dist/pleasure-boilerplate-vue.esm.js",
+  "browser": "dist/pleasure-boilerplate-vue.iife.js",
   "license": "MIT",
   "scripts": {
     "buildd": "rollup -c",
