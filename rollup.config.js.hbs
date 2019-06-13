@@ -102,5 +102,10 @@ export default [
         plugins: postCssSuite
       }),
       minify(),
+      RollupPlugin({
+        componentsSrc: path.join(__dirname, 'src/components'),
+        destination: path.join(__dirname, 'dist')
+      })
+    ])
   }
 ]
