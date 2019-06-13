@@ -1,0 +1,34 @@
+<template>
+  <div class="hello-world">
+    <h1>Hello {{ who }}!</h1>
+  </div>
+</template>
+<style lang="postcss">
+  .hello-world {
+    h1 {
+      padding-bottom: calc(var(--my-project-main-gap) * 2px);
+      color: var(--my-project-palette-primary);
+      border-bottom: 2px dashed var(--my-project-palette-secondary);
+    }
+  }
+</style>
+<script>
+  /**
+   * The custom HelloWorld component.
+   *
+   * @author Martín Rafael González
+   * @license MIT
+   */
+
+  let papo = 1
+  export default {
+    data () {
+      return {
+        /**
+         * Who to salute.
+         */
+        who: 'World'
+      }
+    }
+  }
+</script>
