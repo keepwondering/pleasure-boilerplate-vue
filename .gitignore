@@ -1,2 +1,6 @@
 .idea
 node_modules
+rollup.config.js
+dist
+package.json
+yarn-*

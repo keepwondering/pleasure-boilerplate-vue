@@ -39,8 +39,8 @@ const postCssSuite = [
 
 const plugins = [
   alias({
-    src: fromSrc(),
-    lib: fromSrc('lib')
+    src: src(),
+    lib: src('lib')
   }),
   json(),
   commonjs({
@@ -67,12 +67,12 @@ export default [
     input: 'src/index.js',
     output: [
       {
-        file: `dist/${name}.js`,
+        file: `dist/${ name }.js`,
         format: 'cjs',
         banner
       },
       {
-        file: `dist/${name}.esm.js`,
+        file: `dist/${ name }.esm.js`,
         format: 'esm',
         banner
       }
@@ -89,7 +89,7 @@ export default [
     input: 'src/index.js',
     output: [
       {
-        file: `dist/${name}.iife.js`,
+        file: `dist/${ name }.iife.js`,
         format: 'iife',
         name: '{{{ iifeName }}}',
         banner
