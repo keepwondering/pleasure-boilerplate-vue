@@ -40,10 +40,7 @@ module.exports = {
       },
       {
         name: 'iifeName',
-        message: 'iife module name',
-        when (a) {
-          return a.config.indexOf('iife') >= 0
-        }
+        message: 'iife module name'
       }
     ]
   },
