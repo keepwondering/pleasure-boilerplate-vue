@@ -8,8 +8,10 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",
-    "build:live": "nodemon -w src --exec yarn build",
-    "build:docs": "jsdoc2md --template README.hbs --files dist/{{{ projectName }}}{{#if config.cjs}}{{else}}{{#if config.esm}}esm{{else}}iife{{/if}}{{/if}}.js"
+    "build:comp:docs": "rollup -c",
+    "build:live": "nodemon -e css,html,js -w src -w build/vue-docs --exec yarn build",
+    "build:docs": "jsdoc2md --template README.hbs --files dist/pleasure-boilerplate-rollup-bundle.js",
+    "serve:docs": "light-server -w dist/**.js -w dist/**.html -w dist/**.css -s dist -o"
   },
   "devDependencies": {
     "nodemon": "^1.19.1",
