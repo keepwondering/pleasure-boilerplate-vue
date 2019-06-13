@@ -1,13 +1,41 @@
 import path from 'path'
 import commonjs from 'rollup-plugin-commonjs'
 import json from 'rollup-plugin-json'
-import alias from 'rollup-plugin-alias'{{#config}}{{#iife}}
-import minify from 'rollup-plugin-babel-minify'{{/iife}}{{/config}}
+import alias from 'rollup-plugin-alias'
+import minify from 'rollup-plugin-babel-minify'
 import { name, version, author, license } from './package.json'
+import vuePlugin from 'rollup-plugin-vue'
+import postCss from 'rollup-plugin-postcss'
+import postCssVariables from 'postcss-css-variables'
+import postCssExtend from 'postcss-extend'
+import postCssEasings from 'postcss-easings'
+import postCssNested from 'postcss-nested'
+import postCssHexRgba from 'postcss-hexrgba'
+import postCssColorFuntion from 'postcss-color-function'
+import postCssCalc from 'postcss-calc'
+import postCssPresetEnv from 'postcss-preset-env'
+import Dot from 'dot-object'
+import { RollupPlugin } from 'pleasure-vue-doc'
+import { get, kebabCase, mapKeys } from 'lodash'
+import { src } from './build/lib/from.js'
 
-const fromSrc = (...paths) => {
-  return path.join(__dirname, 'src', ...paths)
-}
+const dot = new Dot('-')
+const postCssVars = mapKeys(dot.dot(require('./postcss.variables.js')), (v, k) => kebabCase(k).replace(/-default$/, ''))
+
+const postCssSuite = [
+  postCssPresetEnv({
+    stage: 4
+  }),
+  postCssNested(),
+  postCssExtend(),
+  postCssEasings(),
+  postCssVariables({
+    variables: postCssVars
+  }),
+  postCssHexRgba(),
+  postCssColorFuntion(),
+  postCssCalc()
+]
 
 const plugins = [
   alias({
@@ -24,7 +52,8 @@ const plugins = [
 
     // if false then skip sourceMap generation for CommonJS modules
     sourceMap: true // Default: true
-  })
+  }),
+  vuePlugin({ css: false })
 ]
 
 const banner = `/*!
@@ -34,7 +63,6 @@ const banner = `/*!
  */`
 
 export default [
-{{#if config.cjs}}
   {
     input: 'src/index.js',
     output: [
@@ -43,24 +71,20 @@ export default [
         format: 'cjs',
         banner
       },
-    ],
-    plugins
-  },
-{{/if}}
-{{#if config.esm}}
-  {
-    input: 'src/index.js',
-    output: [
       {
         file: `dist/${name}.esm.js`,
         format: 'esm',
         banner
       }
     ],
-    plugins
+    plugins: plugins.concat([
+      postCss({
+        extract: false,
+        minimize: true,
+        plugins: postCssSuite
+      })
+    ])
   },
-{{/if}}
-{{#if config.iife}}
   {
     input: 'src/index.js',
     output: [
@@ -71,7 +95,12 @@ export default [
         banner
       }
     ],
-    plugins: plugins.concat(minify())
-  },
-{{/if}}
+    plugins: plugins.concat([
+      postCss({
+        extract: path.join(__dirname, `dist/${ name }.css`),
+        minimize: true,
+        plugins: postCssSuite
+      }),
+      minify(),
+  }
 ]

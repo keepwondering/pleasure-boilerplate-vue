@@ -14,12 +14,33 @@
     "serve:docs": "light-server -w dist/**.js -w dist/**.html -w dist/**.css -s dist -o"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1",
     "jsdoc-to-markdown": "^5.0.0",
+    "light-server": "^2.6.2",
+    "nodemon": "^1.19.1",
+    "postcss-calc": "^7.0.1",
+    "postcss-color-function": "^4.1.0",
+    "postcss-css-variables": "^0.12.0",
+    "postcss-easings": "^2.0.0",
+    "postcss-extend": "^1.0.5",
+    "postcss-hexrgba": "^1.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-nested": "^4.1.2",
+    "postcss-preset-env": "^6.6.0",
+    "postcss-responsive-type": "^1.0.0",
     "rollup": "^1.12.4",
     "rollup-plugin-alias": "^1.5.1",
     "rollup-plugin-babel-minify": "^8.0.0",
     "rollup-plugin-commonjs": "^10.0.0",
-    "rollup-plugin-json": "^4.0.0"
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-vue": "^5.0.0"
+  },
+  "dependencies": {
+    "@vuedoc/md": "^1.6.0",
+    "dot-object": "^1.7.1",
+    "lodash": "^4.17.11",
+    "marked": "^0.6.2",
+    "pleasure-vue-doc": "keepwondering/pleasure-vue-doc",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-replace": "^2.2.0"
   }
 }
