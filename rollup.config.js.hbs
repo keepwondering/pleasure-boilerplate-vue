@@ -103,8 +103,7 @@ export default [
       }),
       minify(),
       RollupPlugin({
-        componentsSrc: path.join(__dirname, 'src/components'),
-        destination: path.join(__dirname, 'dist')
+        componentsSrc: path.join(__dirname, 'src/components')
       })
     ])
   }

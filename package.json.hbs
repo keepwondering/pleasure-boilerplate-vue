@@ -10,8 +10,9 @@
     "build": "rollup -c",
     "build:comp:docs": "rollup -c",
     "build:live": "nodemon -e css,html,js -w src -w build/vue-docs --exec yarn build",
-    "build:docs": "jsdoc2md --template README.hbs --files dist/pleasure-boilerplate-rollup-bundle.js",
-    "serve:docs": "light-server -w dist/**.js -w dist/**.html -w dist/**.css -s dist -o"
+    "build:comp:docs": "pls docs vue build --no-index",
+    "serve:docs": "pls docs serve",
+    "build:readme": "jsdoc2md --template README.hbs --files dist/{{{ projectName }}}.js"
   },
   "devDependencies": {
     "jsdoc-to-markdown": "^5.0.0",
