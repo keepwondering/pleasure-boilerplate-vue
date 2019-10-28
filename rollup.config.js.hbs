@@ -39,8 +39,16 @@ const postCssSuite = [
 
 const plugins = [
   alias({
-    src: src(),
-    lib: src('lib')
+    entries: [
+      {
+        find: 'src',
+        replacement: fromSrc()
+      },
+      {
+        find: 'lib',
+        replacement: fromSrc('lib')
+      }
+    ]
   }),
   json(),
   commonjs({
