@@ -1,5 +1,5 @@
 {
-  "name": "pleasure-boilerplate-vue",
+  "name": "@pleasure-js/boilerplate-vue",
   "author": "Martin Rafael Gonzalez <tin@devtin.io>",
   "version": "1.0.0",
   "main": "dist/pleasure-boilerplate-vue.js",
@@ -39,7 +39,7 @@
     "dot-object": "^1.9.0",
     "lodash": "^4.17.15",
     "marked": "^0.7.0",
-    "pleasure-ui-doc": "keepwondering/pleasure-ui-doc#v1-beta",
+    "@pleasure-js/ui-doc": "git@github.com:pleasure-js/ui-doc.git#v1-beta",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-replace": "^2.2.0",
     "vue-template-compiler": "^2.6.10"
